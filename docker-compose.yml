@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+
+  # ── FastAPI backend ──────────────────────────────────────────────────────────
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: insurance_backend
+    ports:
+      - "8000:8000"       # host:container
+    volumes:
+      - ./artifacts:/app/artifacts   # persist model.pkl & csvs on host
+      - ./logs:/app/logs             # persist log files on host
+    restart: on-failure
+
+  # ── Streamlit frontend ───────────────────────────────────────────────────────
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: insurance_frontend
+    ports:
+      - "8501:8501"
+    environment:
+      # "backend" is the docker-compose service name → resolves inside Docker network
+      - API_URL=http://backend:8000
+    depends_on:
+      - backend
+    restart: on-failure
