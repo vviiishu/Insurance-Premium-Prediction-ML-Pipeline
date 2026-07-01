@@ -1,7 +1,7 @@
 {
   "name": "Insurance Premium Prediction",
 
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "image": "mcr.microsoft.com/devcontainers/python:3.10",
 
   "features": {
     "ghcr.io/devcontainers/features/docker-in-docker:2": {}
