@@ -19,6 +19,7 @@ The project follows a production-oriented ML architecture with modular pipelines
 - Centralized logging
 - Custom exception handling
 - Docker containerization
+- Docker Hub image support
 - GitHub Codespaces support
 - Production-ready folder structure
 
@@ -36,6 +37,7 @@ The project follows a production-oriented ML architecture with modular pipelines
 | Frontend | Streamlit |
 | Model Serialization | Pickle |
 | Containerization | Docker, Docker Compose |
+| Image Registry | Docker Hub |
 | Dev Environment | GitHub Codespaces |
 | Packaging | setuptools |
 
@@ -207,7 +209,85 @@ The frontend container communicates with the backend using the internal Docker n
 
 ---
 
-## Option C — Run on GitHub Codespaces
+## Option C — Run by Pulling Docker Hub Images
+
+The easiest way to run this project — **no code, no Python, no pip needed**. Just Docker.
+
+### Prerequisites
+
+- Docker installed
+
+### Docker Hub Images
+
+| Image | Link |
+|-------|------|
+| Backend | [vviiishu/insurance_premium_backend](https://hub.docker.com/r/vviiishu/insurance_premium_backend) |
+| Frontend | [vviiishu/insurance_premium_frontend](https://hub.docker.com/r/vviiishu/insurance_premium_frontend) |
+
+### Steps
+
+**1. Pull both images from Docker Hub**
+
+```bash
+docker pull vviiishu/insurance_premium_backend:latest
+```
+
+```bash
+docker pull vviiishu/insurance_premium_frontend:latest
+```
+
+**2. Create a shared network**
+
+```bash
+docker network create insurance_network
+```
+
+**3. Run the backend container**
+
+```bash
+docker run -d \
+  --name insurance_backend \
+  --network insurance_network \
+  -p 8000:8000 \
+  vviiishu/insurance_premium_backend:latest
+```
+
+**4. Run the frontend container**
+
+```bash
+docker run -d \
+  --name insurance_frontend \
+  --network insurance_network \
+  -p 8501:8501 \
+  -e API_URL=http://insurance_backend:8000 \
+  vviiishu/insurance_premium_frontend:latest
+```
+
+**5. Verify both containers are running**
+
+```bash
+docker ps
+```
+
+**6. Access the apps**
+
+| Service | URL |
+|---------|-----|
+| Streamlit Frontend | http://localhost:8501 |
+| FastAPI Backend | http://localhost:8000 |
+| Swagger Docs | http://localhost:8000/docs |
+
+**7. Stop and clean up**
+
+```bash
+docker stop insurance_backend insurance_frontend
+docker rm insurance_backend insurance_frontend
+docker network rm insurance_network
+```
+
+---
+
+## Option D — Run on GitHub Codespaces
 
 This repo includes a `.devcontainer/devcontainer.json` configuration that sets up the full environment automatically in GitHub Codespaces with Python 3.10 and Docker pre-installed.
 
@@ -344,3 +424,4 @@ Data Analyst | Machine Learning | Python | FastAPI | Streamlit | SQL | Power BI
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue)](https://www.linkedin.com/in/vishal-kumar-puri-846ba5288)
 [![GitHub](https://img.shields.io/badge/GitHub-Follow-black)](https://github.com/vviiishu)
+[![Docker Hub](https://img.shields.io/badge/Docker%20Hub-vviiishu-blue?logo=docker)](https://hub.docker.com/u/vviiishu)
