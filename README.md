@@ -51,9 +51,8 @@ The project follows a production-oriented ML architecture with modular pipelines
 
 | Service | URL |
 |---------|-----|
-| Streamlit Frontend | https://insurance-frontend.onrender.com |
-| FastAPI Backend | https://insurance-backend.onrender.com |
-| Swagger API Docs | https://insurance-backend.onrender.com/docs |
+| Streamlit Frontend | https://insurance-frontend-j8wn.onrender.com |
+| Swagger API Docs | https://insurance-backend-wgsm.onrender.com/docs |
 
 > **Note:** Services are hosted on Render free tier. They may take ~30 seconds to wake up on first request after a period of inactivity.
 
@@ -237,8 +236,9 @@ docker-compose up --build
 
 | Service | URL |
 |---------|-----|
-| Streamlit Frontend | http://localhost:8501](https://insurance-frontend-j8wn.onrender.com/ |
-| Swagger Docs | http://localhost:8000/docs](https://insurance-backend-wgsm.onrender.com/docs |
+| Streamlit Frontend | http://localhost:8501 |
+| FastAPI Backend | http://localhost:8000 |
+| Swagger Docs | http://localhost:8000/docs |
 
 **4. Stop the containers**
 
@@ -473,4 +473,4 @@ Data Analyst | Machine Learning | Python | FastAPI | Streamlit | SQL | Power BI
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue)](https://www.linkedin.com/in/vishal-kumar-puri-846ba5288)
 [![GitHub](https://img.shields.io/badge/GitHub-Follow-black)](https://github.com/vviiishu)
 [![Docker Hub](https://img.shields.io/badge/Docker%20Hub-vviiishu-blue?logo=docker)](https://hub.docker.com/u/vviiishu)
-[![Render](https://img.shields.io/badge/Deployed%20on-Render-46E3B7?logo=render)](https://insurance-frontend.onrender.com)
+[![Render](https://img.shields.io/badge/Deployed%20on-Render-46E3B7?logo=render)](https://insurance-frontend-j8wn.onrender.com)
