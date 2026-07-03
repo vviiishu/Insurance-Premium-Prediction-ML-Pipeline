@@ -410,7 +410,6 @@ Predicts the insurance premium category for a given user.
 - Model Monitoring
 - MLflow Integration
 - Unit Testing
-- CI/CD with GitHub Actions
 - Kubernetes Deployment
 - Model versioning
 
