@@ -2,7 +2,7 @@
 
 An end-to-end Machine Learning project that predicts an individual's insurance premium category based on demographic, lifestyle, and financial attributes.
 
-The project follows a production-oriented ML architecture with modular pipelines, centralized logging, exception handling, FastAPI backend, Streamlit frontend, and Docker support.
+The project follows a production-oriented ML architecture with modular pipelines, centralized logging, exception handling, FastAPI backend, Streamlit frontend, Docker support, CI/CD pipeline, and live deployment on Render.
 
 ---
 
@@ -21,6 +21,8 @@ The project follows a production-oriented ML architecture with modular pipelines
 - Docker containerization
 - Docker Hub image support
 - GitHub Codespaces support
+- CI/CD with GitHub Actions
+- Live deployment on Render
 - Production-ready folder structure
 
 ---
@@ -39,7 +41,21 @@ The project follows a production-oriented ML architecture with modular pipelines
 | Containerization | Docker, Docker Compose |
 | Image Registry | Docker Hub |
 | Dev Environment | GitHub Codespaces |
+| CI/CD | GitHub Actions |
+| Deployment | Render |
 | Packaging | setuptools |
+
+---
+
+## Live Demo
+
+| Service | URL |
+|---------|-----|
+| Streamlit Frontend | https://insurance-frontend.onrender.com |
+| FastAPI Backend | https://insurance-backend.onrender.com |
+| Swagger API Docs | https://insurance-backend.onrender.com/docs |
+
+> **Note:** Services are hosted on Render free tier. They may take ~30 seconds to wake up on first request after a period of inactivity.
 
 ---
 
@@ -50,6 +66,10 @@ Insurance-Premium-Prediction-ML-Pipeline/
 │
 ├── .devcontainer/
 │   └── devcontainer.json          # GitHub Codespaces configuration
+│
+├── .github/
+│   └── workflows/
+│       └── ci_cd.yml              # GitHub Actions CI/CD pipeline
 │
 ├── artifacts/
 │   ├── raw.csv
@@ -107,6 +127,36 @@ The model is trained using the following input features:
 ### Target
 
 Insurance Premium Category (`Low`, `Medium`, `High`)
+
+---
+
+## CI/CD Pipeline
+
+Every push to `main` branch automatically triggers the CI/CD pipeline via GitHub Actions.
+
+```
+Push code to GitHub
+        │
+        ▼
+CI — Build and Test
+        ├── Install dependencies
+        ├── Check all module imports
+        ├── Run training pipeline
+        ├── Verify model.pkl generated
+        └── Check FastAPI app loads
+        │
+        ✅ CI passes
+        │
+        ▼
+CD — Deploy to Render
+        ├── Trigger backend deploy hook
+        └── Trigger frontend deploy hook
+        │
+        ▼
+Live app updated automatically ✅
+```
+
+> README and documentation changes do not trigger the pipeline — only source code changes do.
 
 ---
 
@@ -230,9 +280,6 @@ The easiest way to run this project — **no code, no Python, no pip needed**. J
 
 ```bash
 docker pull vviiishu/insurance_premium_backend:latest
-```
-
-```bash
 docker pull vviiishu/insurance_premium_frontend:latest
 ```
 
@@ -369,6 +416,9 @@ Prediction Pipeline
    │         │
    │         ▼
    └──▶  Streamlit (Frontend.py)
+              │
+              ▼
+         Render (Live)
 ```
 
 ---
@@ -424,3 +474,4 @@ Data Analyst | Machine Learning | Python | FastAPI | Streamlit | SQL | Power BI
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue)](https://www.linkedin.com/in/vishal-kumar-puri-846ba5288)
 [![GitHub](https://img.shields.io/badge/GitHub-Follow-black)](https://github.com/vviiishu)
 [![Docker Hub](https://img.shields.io/badge/Docker%20Hub-vviiishu-blue?logo=docker)](https://hub.docker.com/u/vviiishu)
+[![Render](https://img.shields.io/badge/Deployed%20on-Render-46E3B7?logo=render)](https://insurance-frontend.onrender.com)
