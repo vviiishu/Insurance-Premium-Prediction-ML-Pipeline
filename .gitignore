@@ -1,60 +1,10 @@
-# Python
 __pycache__/
-*.py[cod]
-*$py.class
-
-# Virtual Environment
-.env
-.venv/
-venv/
-ENV/
-env/
-
-# Logs
+*.pyc
+*.pyo
 logs/
 *.log
-
-# Artifacts
-artifacts/
-*.pkl
-*.joblib
-
-# Jupyter
-.ipynb_checkpoints/
-
-# VS Code
-.vscode/
-
-# PyCharm
-.idea/
-
-# Mac
-.DS_Store
-
-# Windows
-Thumbs.db
-
-# Python build files
-build/
-dist/
-*.egg-info/
-
-# Testing
-.pytest_cache/
-.coverage
-htmlcov/
-
-# mypy
-.mypy_cache/
-
-# Ruff
-.ruff_cache/
-
-# cache
-.cache/
-
-# Environment Variables
-*.env
-
-# Streamlit
-.streamlit/secrets.toml
+.env
+venv/
+artifacts/raw.csv
+artifacts/train.csv
+artifacts/test.csv
