@@ -237,9 +237,8 @@ docker-compose up --build
 
 | Service | URL |
 |---------|-----|
-| Streamlit Frontend | http://localhost:8501 |
-| FastAPI Backend | http://localhost:8000 |
-| Swagger Docs | http://localhost:8000/docs |
+| Streamlit Frontend | http://localhost:8501](https://insurance-frontend-j8wn.onrender.com/ |
+| Swagger Docs | http://localhost:8000/docs](https://insurance-backend-wgsm.onrender.com/docs |
 
 **4. Stop the containers**
 
